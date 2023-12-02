@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Statistic Viewer">
+    <meta name="description" content="">
+    <title id="dynamicTitle"></title>
+    <link rel="icon" id="dynamicIcon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Stats.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.19.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,400,500,600,700,800,900|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"sameAs": [
+				"https://github.com/EjurisYT",
+				"https://discord.gg/8P48PeqF",
+				"https://www.youtube.com/channel/UCEN80EQFTwEO7oKZ5DesWWQ"
+		]
+}</script>
+<script>
+  const url = window.location.pathname;
+  const username = url.substring(url.lastIndexOf('/') + 1);
+
+  fetch(`/bw/api/stats/${username}`)
+      .then(response => response.json())
+      .then(data => {
+          updateUI(data);
+      });
+
+  // Add an event listener for the date input
+  document.getElementById('selectDate').addEventListener('change', function () {
+      fetchStatsByDate();
+  });
+
+  // Define a function to update the UI with the received stats
+  function updateUI(data) {
+      document.querySelector('#username').textContent = data.username;
+      document.querySelector('#kills-placement').textContent = data.stats.kills.placement;
+      document.querySelector('#kills-value').textContent = data.stats.kills.value;
+      document.querySelector('#wins-placement').textContent = data.stats.wins.placement;
+      document.querySelector('#wins-value').textContent = data.stats.wins.value;
+      document.querySelector('#deaths-placement').textContent = data.stats.deaths.placement;
+      document.querySelector('#deaths-value').textContent = data.stats.deaths.value;
+      document.querySelector('#beds-placement').textContent = data.stats.beds.placement;
+      document.querySelector('#beds-value').textContent = data.stats.beds.value;
+      document.querySelector('#games-placement').textContent = data.stats.games.placement;
+      document.querySelector('#games-value').textContent = data.stats.games.value;
+      document.getElementById('playerHeadImage').src = `https://mc-heads.net/body/${username}`;
+      document.getElementById('dynamicTitle').innerText = `${username}'s stats`;
+
+      const newFavicon = document.createElement('link');
+      newFavicon.rel = 'icon';
+      newFavicon.type = 'image/x-icon';
+      newFavicon.href = `https://mc-heads.net/head/${username}`;
+
+      const oldFavicon = document.getElementById('dynamicIcon');
+      oldFavicon.parentNode.replaceChild(newFavicon, oldFavicon);
+
+      const kdRatio = data.stats.kills.value / data.stats.deaths.value;
+      document.querySelector('#kdRatio').textContent = kdRatio.toFixed(2);
+
+      const wlRatio = data.stats.wins.value / data.stats.games.value * 100;
+      document.querySelector('#wlRatio').textContent = wlRatio.toFixed(2) + '%';
+
+      const bgRatio = data.stats.beds.value / data.stats.games.value;
+      document.querySelector('#bgRatio').textContent = bgRatio.toFixed(2);
+
+      const kgRatio = data.stats.kills.value / data.stats.games.value;
+      document.querySelector('#kgRatio').textContent = kgRatio.toFixed(2);
+
+      console.log(kgRatio);
+
+  }
+</script>
+
+<style>
+  #selectDate {
+      width: 260px;
+      background-color: #00d9ff;
+  }
+
+</style>
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Stats">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <body data-path-to-root="./" class="u-body u-xl-mode" data-lang="en">
+    <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="1920" data-image-height="1080" id="sec-5742">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-1">
+          <div class="u-container-layout u-valign-middle u-container-layout-1">
+            <p class="u-text u-text-default u-text-1"><span id="username">Username</span></p>
+          </div>
+        </div>
+        <div class="u-grey-80 u-opacity u-opacity-75 u-radius-10 u-shape u-shape-round u-shape-1">
+          <div class="box-content">
+              <p><br><br></p>
+              <img id="playerHeadImage" alt="Player Head Image">
+          </div>
+      </div>
+        <div class="u-container-style u-custom-item u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-2">Kills #<span id="kills-placement">100000</h2>
+            <p class="u-custom-font u-font-open-sans u-text u-text-default u-text-3"><span id="kills-value">10000</p>
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-4">KD: <span id="kdRatio">99.99</h2>
+          </div>
+        </div>
+        <div class="u-container-style u-custom-item u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-3">
+          <div class="u-container-layout u-container-layout-3">
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-5">Wins #<span id="wins-placement">100000</h2>
+            <p class="u-custom-font u-font-open-sans u-text u-text-default u-text-6"><span id="wins-value">10000</p>
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-7">WLR: <span id="wlRatio">100.00%</h2>
+          </div>
+        </div>
+        <div class="u-container-style u-custom-item u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-4">
+          <div class="u-container-layout u-container-layout-4">
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-8">Beds #<span id="beds-placement">10000</h2>
+            <p class="u-custom-font u-font-open-sans u-text u-text-default u-text-9"><span id="beds-value">10000</p>
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-10">B/G: <span id="bgRatio">99.99</span></h2>
+          </div>
+        </div>
+        <div class="u-container-style u-custom-item u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-5">
+          <div class="u-container-layout u-container-layout-5">
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-11">Deaths #<span id="deaths-placement">10000</h2>
+            <p class="u-custom-font u-font-open-sans u-text u-text-default u-text-12"><span id="deaths-value">10000</p>
+          </div>
+        </div>
+        <div class="u-container-style u-custom-item u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-6">
+          <div class="u-container-layout u-container-layout-6">
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-text-13">Games #<span id="games-placement">10000</h2>
+            <p class="u-custom-font u-font-open-sans u-text u-text-default u-text-14"><span id="games-value">10000</p>
+              <h2 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-4">K/G: <span id="kgRatio">99.99</h2>
+          </div>
+        </div>
+        <div class="u-container-style u-custom-item u-grey-80 u-group u-opacity u-opacity-75 u-radius-10 u-shape-round u-group-7">
+          <div class="u-container-layout u-container-layout-7">
+            <h2 class="u-custom-font u-font-roboto-slab u-text u-opacity u-opacity-75 u-text-default u-text-15">History</h2>
+            <input type="date" id="selectDate" class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-15" style="background: none; border: none; opacity: 0.7;">
+
+            </div>
+      </div>
+      
+      </div>
+      <script>// Add an event listener for the date input
+        document.getElementById('selectDate').addEventListener('change', function () {
+            fetchStatsByDate();
+        });
+        
+        function fetchStatsByDate() {
+    console.log('Fetching stats for the selected date...'); // Add this line
+
+    const selectedDate = document.getElementById('selectDate').value;
+    const apiUrl = `/bw/api/stats/${username}?date=${selectedDate}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log('Stats for selected date:', data); // Add this line
+            updateUI(data);
+        })
+        .catch(error => {
+            console.error('Error fetching stats:', error);
+        });
+}
+
+function updateUI(data) {
+      document.querySelector('#username').textContent = data.username;
+      document.querySelector('#kills-placement').textContent = data.stats.kills.placement;
+      document.querySelector('#kills-value').textContent = data.stats.kills.value;
+      document.querySelector('#wins-placement').textContent = data.stats.wins.placement;
+      document.querySelector('#wins-value').textContent = data.stats.wins.value;
+      document.querySelector('#deaths-placement').textContent = data.stats.deaths.placement;
+      document.querySelector('#deaths-value').textContent = data.stats.deaths.value;
+      document.querySelector('#beds-placement').textContent = data.stats.beds.placement;
+      document.querySelector('#beds-value').textContent = data.stats.beds.value;
+      document.querySelector('#games-placement').textContent = data.stats.games.placement;
+      document.querySelector('#games-value').textContent = data.stats.games.value;
+      document.getElementById('playerHeadImage').src = `https://mc-heads.net/body/${username}`;
+      document.getElementById('dynamicTitle').innerText = `${username}'s stats`;
+
+      const newFavicon = document.createElement('link');
+      newFavicon.rel = 'icon';
+      newFavicon.type = 'image/x-icon';
+      newFavicon.href = `https://mc-heads.net/head/${username}`;
+
+      const oldFavicon = document.getElementById('dynamicIcon');
+      oldFavicon.parentNode.replaceChild(newFavicon, oldFavicon);
+
+      const kdRatio = data.stats.kills.value / data.stats.deaths.value;
+      document.querySelector('#kdRatio').textContent = kdRatio.toFixed(2);
+
+      const wlRatio = data.stats.wins.value / data.stats.games.value * 100;
+      document.querySelector('#wlRatio').textContent = wlRatio.toFixed(2) + '%';
+
+      const bgRatio = data.stats.beds.value / data.stats.games.value;
+      document.querySelector('#bgRatio').textContent = bgRatio.toFixed(2);
+
+      const kgRatio = data.stats.kills.value / data.stats.games.value;
+      document.querySelector('#kgRatio').textContent = kgRatio.toFixed(2);
+
+      console.log(kgRatio);
+
+  }
+  
+        </script>
+    </section>
+    
+</body></html>
