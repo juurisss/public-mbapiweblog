@@ -1,8 +1,11 @@
 # MBAPIWEBLOG
 
 MB refers to the Minecraft server, Mineberry.
+
 API - Application Programming Interface
+
 Web - Website
+
 Log - Logging and Stats
 
 ## Table of Contents
