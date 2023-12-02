@@ -9,6 +9,7 @@ Log - Logging and Stats
 - [About](#about)
 - [Features](#features)
 - [Installation](#installation)
+- [Usage](#Usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -34,6 +35,9 @@ For Windows:
     ```
 4. Modify `config.js` as needed. You can open it with Notepad.
 5. Run the bot by typing `node index.js`.
+
+## Usage
+If you're running this in localhost, you may open https://127.0.0.1/bw in your website to access the website. From there, you can view other players' stats (if they are in the database because /stat is broken atm) and the leaderboards.
 
 ## Contributing
 This endeavor would not have been possible without the invaluable contributions of Malkist and Adikan.
