@@ -330,7 +330,6 @@ const initBot = () => {
         });
     }
     
-    
     function findPlayerDataFile(username, selectedDate) {
         let playerDataFile = null;
     
@@ -346,7 +345,10 @@ const initBot = () => {
             }
         } else {
             const today = new Date();
-            for (let daysAgo = 0; daysAgo <= 30; daysAgo++) {
+            const maxDaysToSearch = 30;
+            let daysAgo = 0;
+    
+            while (true) {
                 const previousDay = new Date(today);
                 previousDay.setDate(today.getDate() - daysAgo);
     
@@ -357,14 +359,19 @@ const initBot = () => {
                     playerDataFile = tempPlayerDataFile;
                     break;
                 } else {
-                    fs.mkdirSync(path.join(baseDatabaseDir, formattedPreviousDay), { recursive: true });
+                    if (daysAgo <= maxDaysToSearch) {
+                        fs.mkdirSync(path.join(baseDatabaseDir, formattedPreviousDay), { recursive: true });
+                    }
+                    
                     playerDataFile = tempPlayerDataFile;
                 }
+    
+                daysAgo++;
             }
     
             return playerDataFile;
         }
-    }    
+    }
     
     function formatDate(date) {
         const year = date.getFullYear();
