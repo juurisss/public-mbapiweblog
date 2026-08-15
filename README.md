@@ -1,3 +1,5 @@
+Project Note: This was an early hobby project. Looking back, several architectural, security, documentation, and implementation decisions could be improved. See RETROSPECTIVE.md for a detailed reflection.
+
 # MBAPIWEBLOG
 
 MB refers to the Minecraft server, Mineberry.
