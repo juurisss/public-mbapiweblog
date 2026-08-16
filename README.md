@@ -1,3 +1,6 @@
+> [!WARNING]
+> This project is archived and no longer maintained. It was developed several years ago, and some features, dependencies, or functionality may no longer work as expected. The repository is preserved for reference and educational purposes.
+
 Project Note: This was an early hobby project. Looking back, several architectural, security, documentation, and implementation decisions could be improved. See RETROSPECTIVE.md for a detailed reflection.
 
 # MBAPIWEBLOG
