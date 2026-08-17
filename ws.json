@@ -1,0 +1,14 @@
+{
+  "id": "public-mbapiweblog",
+  "displayName": "MBAPIWEBLOG",
+  "description": "Mineberry server stats API, web dashboard, and logging system built with Node.js.",
+  "longDescription": "MB refers to Mineberry, a Minecraft server. This project exposes an API for player stats and leaderboards that other tools — like Discord bots — can query, and also serves a website where stats and leaderboards can be viewed directly.",
+  "status": "archived",
+  "statusNote": "This project is archived and no longer maintained. It was developed several years ago and some features, dependencies, or functionality may no longer work as expected. Preserved for reference.",
+  "primaryLanguage": "CSS",
+  "technologies": ["Node.js", "ExpressJS", "Web dashboard", "Logging", "Leaderboards", "Mineflayer"],
+  "categories": ["web", "minecraft", "automation"],
+  "featured": true,
+  "license": "MIT",
+  "liveUrl": "https://mbweb321.netlify.app"
+}
